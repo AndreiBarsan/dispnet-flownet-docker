@@ -1,0 +1,1 @@
+/home/barsana/datasets/kitti/odometry-dataset/sequences/03/precomputed-depth-dispnet/000675.pfm

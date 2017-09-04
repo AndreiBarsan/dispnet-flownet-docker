@@ -53,9 +53,9 @@ ls "${LEFT_DIR}"/*.png | head -n "$LIMIT" | \
 
 # TODO: how about trying DispNetCorr1D-K? It performs slightly better in their
 # paper thanks to the explicit correlation layer.
-MODEL="DispNet-K"
+MODEL="DispNetCorr1D-K"
 
-${SCRIPT_DIR}/run-network.sh -n "${MODEL}" -g 0 -vvv \
+${SCRIPT_DIR}/run-network.sh -n "${MODEL}" -g 0 -vv \
   left-dispnet-in.txt right-dispnet-in.txt left-dispnet-out.txt
 
 

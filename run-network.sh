@@ -141,13 +141,13 @@ if test $VERBOSITY -ge 2; then
     --rm \
     --volume "${PWD}:/input-output:rw" \
     --workdir "${WORKDIR}" \
-    -it "$CONTAINER" python demo.py "${FIRST_INPUT}" "${SECOND_INPUT}" "${OUTPUT}" "${GPU_IDX}";
+    "$CONTAINER" python demo.py "${FIRST_INPUT}" "${SECOND_INPUT}" "${OUTPUT}" "${GPU_IDX}";
 else
   nvidia-docker run \
     --rm \
     --volume "${PWD}:/input-output:rw" \
     --workdir "${WORKDIR}" \
-    -it "$CONTAINER" python demo.py "${FIRST_INPUT}" "${SECOND_INPUT}" "${OUTPUT}" "${GPU_IDX}" \
+    "$CONTAINER" python demo.py "${FIRST_INPUT}" "${SECOND_INPUT}" "${OUTPUT}" "${GPU_IDX}" \
     > /dev/null;
 fi
 
