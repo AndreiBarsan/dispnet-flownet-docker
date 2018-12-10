@@ -7,6 +7,7 @@
 
 set -eu
 IFS=$'\n\t'
+GPU_ID_TO_USE=0
 
 if [[ "$#" -eq 0 ]] || [[ "$#" -gt 4 ]]; then
   echo >&2 "Usage: $0 <kitti_sequence_root> [<left_dir>, <right_dir>, <out_dir>]"
@@ -39,7 +40,8 @@ ls "$LEFT_DIR"/*.png | head -n "$LIMIT" | \
     sed "s/${LEFT_DIR}/${OUT_DIR}/g" | \
     sed 's/png/pfm/g' >| left-dispnet-out.txt
 
-${SCRIPT_DIR}/run-network.sh -n DispNetCorr1D-K -g 0 -vv \
+# Build the docker image and run the network inside it.
+${SCRIPT_DIR}/run-network.sh -n DispNetCorr1D-K -g "$GPU_ID_TO_USE" -vv \
   left-dispnet-in.txt right-dispnet-in.txt left-dispnet-out.txt
 
 
